@@ -8,12 +8,13 @@ const MovieSchema = new Schema({
     },
     years: {
         type: Number,
-        required
+        required,
     },
     UserID: {
         type: Schema.Types.ObjectId,
         ref: "users",
-    } createdAt: {
+    },
+    createdAt: {
         type: Date,
         default: Date.now,
     },
@@ -21,4 +22,4 @@ const MovieSchema = new Schema({
         type: Date,
         default: Date.now,
     },
-})
+});
