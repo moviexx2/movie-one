@@ -8,7 +8,7 @@ const MovieSchema = new Schema({
     },
     years: {
         type: Number,
-        required,
+        required: true,
     },
     UserID: {
         type: Schema.Types.ObjectId,
