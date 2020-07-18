@@ -23,3 +23,7 @@ const MovieSchema = new Schema({
         default: Date.now,
     },
 });
+
+const Movie = mongoose.model("movie", MovieSchema);
+
+module.exports = Movie;
