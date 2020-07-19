@@ -11,6 +11,16 @@ module.exports = {
             console.log(error);
         }
     },
+    home: async (req, res) => {
+        try {
+            const results = await Movie.find();
+
+            console.log({ message: "Add movie succes", data: results });
+            res.render("home", { result: results });
+        } catch (error) {
+            console.log(error);
+        }
+    },
     get: async (req, res) => {
         try {
             const result = await Movie.find().populate("UserID");
