@@ -1,4 +1,4 @@
-const { hashed } = require("../../helpers");
+// const { hashed } = require("../../helpers");
 const { Movie } = require("../../models");
 
 module.exports = {
