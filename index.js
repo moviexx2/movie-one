@@ -36,7 +36,7 @@ app.use(expressLayout);
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-    res.render("login");
+    res.render("login.ejs");
 });
 app.use("/users", require("./routes/users"));
 
