@@ -11,20 +11,20 @@ module.exports = {
             console.log(error);
         }
     },
-    home: async (req, res) => {
-        try {
-            const results = await Movie.find();
+    // home: async (req, res) => {
+    //     try {
+    //         const results = await Movie.find();
 
-            console.log({ message: "Add movie succes", data: results });
-            res.render("home", { result: results });
-        } catch (error) {
-            console.log(error);
-        }
-    },
+    //         console.log({ message: "Add movie succes", data: results });
+    //         res.render("home", { result: results });
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // },
     get: async (req, res) => {
         try {
             const result = await Movie.find().populate("UserID");
-            res.send({ message: "add movie succesfull", data: result });
+            res.render("home.ejs", { result });
         } catch (error) {
             console.log(error);
         }
@@ -34,27 +34,32 @@ module.exports = {
             const { UserID } = req.params;
 
             const result = await Movie.find({ UserID }).populate("UserID");
-            res.send({ message: "Add movie succesful", data: result });
+            res.send({ message: "Add movie by id succesful", data: result });
         } catch (error) {
             console.log(error);
         }
     },
-    deleteUserId: async (req, res) => {
+    deleteMovieId: async (req, res) => {
+        const { id } = req.params;
         try {
-            const { id } = req.params;
-            const result = await Movie.findByIdAndDelete(id);
-            res.send({ message: "Delete succes", data: result });
+            const result = await Movie.deleteOne({ _id: id });
+            res.send({
+                message: `Delete data succcess`,
+                data: result,
+            });
         } catch (error) {
-            console.log(error);
+            res.send(error);
         }
     },
-    editUserID: async (req, res) => {
+    editMovieID: async (req, res) => {
+        const { id } = req.params;
+        console.log(id);
         try {
-            const { UserID } = req.params;
+            const result = await Movie.findByIdAndUpdate(id, {
+                $set: { ...req.body },
+            });
 
-            const result = await Movie.find({ UserID }).populate("UserID");
-            console.log(result);
-            res.send({ message: "Succes", data: result });
+            res.send({ message: "Update succes", data: result });
         } catch (error) {
             console.log(error);
         }
