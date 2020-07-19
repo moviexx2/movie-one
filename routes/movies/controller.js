@@ -11,4 +11,12 @@ module.exports = {
             console.log(error);
         }
     },
+    get: async (req, res) => {
+        try {
+            const result = await Movie.find().populate("UserID");
+            Response.send({ message: "add movie succesfull", data: result });
+        } catch (error) {
+            console.log(error);
+        }
+    },
 };
