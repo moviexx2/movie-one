@@ -29,4 +29,24 @@ module.exports = {
             console.log(error);
         }
     },
+    deleteUserId: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const result = await Movie.findByIdAndDelete(id);
+            res.send({ message: "Delete succes", data: result });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    editUserID: async (req, res) => {
+        try {
+            const { UserID } = req.params;
+
+            const result = await Movie.find({ UserID }).populate("UserID");
+            console.log(result);
+            res.send({ message: "Succes", data: result });
+        } catch (error) {
+            console.log(error);
+        }
+    },
 };
