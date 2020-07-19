@@ -19,4 +19,14 @@ module.exports = {
             console.log(error);
         }
     },
+    getByUserID: async (req, res) => {
+        try {
+            const { UserID } = req.params;
+
+            const result = await Movie.find({ UserID }).populate("UserID");
+            res.send({ message: "Add movie succesful", data: result });
+        } catch (error) {
+            console.log(error);
+        }
+    },
 };
