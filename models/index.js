@@ -1,5 +1,5 @@
 module.exports = {
     User: require("./User"),
-    Product: require("./Product"),
+    // Product: require("./Product"),
     Movie: require("./Movie"),
 };
