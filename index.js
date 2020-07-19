@@ -36,7 +36,7 @@ app.use(expressLayout);
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-    res.send({ message: "Welcome to my API with passport" });
+    res.render("login");
 });
 app.use("/users", require("./routes/users"));
 // app.use("/products", require("./routes/products"));

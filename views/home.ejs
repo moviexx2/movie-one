@@ -1,20 +1,24 @@
+<%- include('./partials/header.ejs') %>
+<br />
+<form
+    action="/movies/findByUserID/?"
+    method="GET"
+    style="padding-bottom: 25px;"
+>
+    <input type="text" name="UserID" id="UserID" placeholder="Find Movie" />
+</form>
 <table
     id="example"
-    class="table table-striped table-bordered"
+    class="table table-striped table-bordered mt-1"
     style="width: 100%;"
 >
-    <form action="/movies/findByUserID/?" method="GET">
-        <input type="text" name="UserID" id="UserID" />
-    </form>
-    <thead>
+    <thead class="thead-dark">
         <tr>
             <th>No</th>
             <th>Movie Name</th>
-            <th>Id Movie</th>
             <th>Genre</th>
             <th>Years</th>
             <th>Created By</th>
-            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -22,14 +26,9 @@
         <tr>
             <td><%= i+1; %></td>
             <td><%= result[i].name %></td>
-            <td><%= result[i]._id %></td>
             <td><%= result[i].genre %></td>
-            <td><%= result[i].years %></td>
-            <!-- <td><%= result[i].UserID %></td> -->
-            <td>
-                <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-danger">Delete</button>
-            </td>
+            <td><%= result[i].year %></td>
+            <td><%= result[i].UserID %></td>
         </tr>
         <% } %>
     </tbody>
