@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const { forwardAuthenticate, ensureAuthenticate } = require("../../config");
 
-// testing 1
-
 router.get("/", forwardAuthenticate, require("./controller").get);
 router.get("/findByUserID/:UserID", require("./controller").getByUserID);
 router.post("/upload", require("./controller").create);
