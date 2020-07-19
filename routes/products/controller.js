@@ -46,6 +46,8 @@ module.exports = {
             const { UserID } = req.params;
 
             const result = await Movie.find({ UserID }).populate("UserID");
+            console.log(result);
+            res.send({ message: "Succes", data: result });
         } catch (error) {
             console.log(error);
         }
