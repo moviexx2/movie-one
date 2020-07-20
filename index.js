@@ -36,10 +36,11 @@ app.use(expressLayout);
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-    res.send({ message: "Welcome to my API with passport" });
+    res.render("login.ejs");
 });
 app.use("/users", require("./routes/users"));
-app.use("/products", require("./routes/products"));
+
+app.use("/movies", require("./routes/movies"));
 
 if (db) {
     app.listen(PORT, () => {
