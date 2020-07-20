@@ -1,10 +1,15 @@
 const { hashed } = require("../../helpers");
-const { Movie } = require("../../models");
+const { Movie, User } = require("../../models");
 
 module.exports = {
     create: async (req, res) => {
         try {
-            const result = await Movie.create({ ...req.body });
+            const result = await Movie.create({
+                name: req.body.name,
+                genre: req.body.genre,
+                year: req.body.year,
+                UserID: req.user._id,
+            });
 
             res.redirect("/movies/home");
         } catch (error) {
@@ -19,6 +24,9 @@ module.exports = {
         try {
             const result = await Movie.find().populate("UserID");
             res.render("home.ejs", { result });
+            // res.send({
+            //     data:result
+            // })
         } catch (error) {
             console.log(error);
         }
